@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/Llvm/x64/bin/clang.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerArgs": [
+                "-ID:\\Java8\\include ",
+                "-ID:\\Java8\\include\\win32",
+                "-I./include",
+                "-ID:\\Qt5.14.2\\5.14.2\\msvc2017_64\\include\\QtWidgets",
+                "-ID:\\Qt5.14.2\\5.14.2\\msvc2017_64\\include\\QtCore",
+                "-ID:\\Qt5.14.2\\5.14.2\\msvc2017_64\\include\\QtGui",
+                "-ID:\\Qt5.14.2\\5.14.2\\msvc2017_64\\include"
+            ]
+        }
+    ],
+    "version": 4
+}
