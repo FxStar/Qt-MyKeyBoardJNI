@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "qapplication": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "*.rh": "cpp"
     }
 }

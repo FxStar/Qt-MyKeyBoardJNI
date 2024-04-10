@@ -89,6 +89,7 @@ void runQtEventLoop()
     Qt::WindowFlags flags = window->windowFlags();
     flags &= ~Qt::WindowMinMaxButtonsHint; // 移除缩小按钮 和放大
     flags |= Qt::WindowStaysOnTopHint;     // 窗口始终位于顶部
+    flags |= Qt::WindowDoesNotAcceptFocus; // linux 用到（不会获取焦点）
     window->setWindowFlags(flags);
 #ifdef Win_OS
     // 具体来说，WS_EX_NOACTIVATE 表示窗口不会激活，即不会成为焦点窗口，不会接收键盘输入等。而 WS_EX_COMPOSITED 表示窗口使用了复合（compositing）特性，这通常与视觉效果和渲染性能有关。
@@ -101,7 +102,6 @@ void runQtEventLoop()
 
     AeaQt::Keyboard keyboard;
     keyboard.show();
-    
 
     keyboard.registerCallback(callbackOnKeyPressed);
 
