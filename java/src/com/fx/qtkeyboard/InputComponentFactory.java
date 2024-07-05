@@ -3,6 +3,7 @@ package com.fx.qtkeyboard;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JSpinner;
 
 public class InputComponentFactory {
 
@@ -12,9 +13,9 @@ public class InputComponentFactory {
         } else if (component instanceof JTextArea) {
             return JMyTextArea.getInstance((JTextArea) component);
         }
-        // else if (component instanceof JSpinner) {
-        // return new JSpinnerInput((JSpinner) component);
-        // }
-        return null; // 如果不支持的组件类型，可以根据需求返回适当的默认值
+        else if (component instanceof JSpinner) {
+        return JText.getInstance((JTextField) component);
+        }
+        return JText.getInstance((JTextField) component); // 如果不支持的组件类型，可以根据需求返回适当的默认值
     }
 }

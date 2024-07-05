@@ -21,12 +21,10 @@ public class JMyTextArea extends BaseInputAbstract {
     public static JMyTextArea getInstance(JTextArea textArea) {
         // 使用双重检查锁定，确保只有一个线程可以创建实例
         if (instance == null) {
-            synchronized (JMyTextArea.class) {
-                if (instance == null) {
-                    instance = new JMyTextArea(textArea);
+            instance = new JMyTextArea(textArea);
 
-                }
-            }
+        }else{
+            instance.textArea = textArea;
         }
         return instance;
     }

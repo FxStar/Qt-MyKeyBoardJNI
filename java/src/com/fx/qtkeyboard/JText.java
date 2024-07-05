@@ -20,16 +20,13 @@ public class JText extends BaseInputAbstract {
     public static JText getInstance(JTextField textField) {
         // 使用双重检查锁定，确保只有一个线程可以创建实例
         if (instance == null) {
-            synchronized (JText.class) {
-                if (instance == null) {
-                    instance = new JText(textField);
-
-                }
-            }
+            instance = new JText(textField);
+        } else {
+            instance.textField = textField;
         }
+
         return instance;
     }
-
 
     @Override
     public void onResponse(KeyBoardListenerEvent event) {

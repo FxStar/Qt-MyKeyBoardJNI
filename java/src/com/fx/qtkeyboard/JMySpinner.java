@@ -22,12 +22,10 @@ public class JMySpinner extends BaseInputAbstract {
     public static JMySpinner getInstance(JSpinner jSpinner) {
         // 使用双重检查锁定，确保只有一个线程可以创建实例
         if (instance == null) {
-            synchronized (JMySpinner.class) {
-                if (instance == null) {
-                    instance = new JMySpinner(jSpinner);
+            instance = new JMySpinner(jSpinner);
 
-                }
-            }
+        }else{
+            instance.jSpinner1 = jSpinner;
         }
         return instance;
     }
@@ -36,7 +34,7 @@ public class JMySpinner extends BaseInputAbstract {
     public void onResponse(KeyBoardListenerEvent event) {
         // int caretPosition = jSpinner1.getCaretPosition();
 
-        // AccessibleContext accessibleContext =  jSpinner1.getAccessibleContext();
+        // AccessibleContext accessibleContext = jSpinner1.getAccessibleContext();
 
         // switch (event.getKey()) {
         // case 16777252: // 切换大小写
@@ -73,6 +71,6 @@ public class JMySpinner extends BaseInputAbstract {
         // }
         // });
         // }
-        
+
     }
 }

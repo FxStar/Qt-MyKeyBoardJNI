@@ -152,6 +152,7 @@ JNIEXPORT jint JNICALL Java_com_fx_qtkeyboard_QTKeyBoardJNI_KeyBoardOpen(JNIEnv 
     if (window)
     {
         window->show();
+        window->raise();
         return 1;
     }
     return 0;
