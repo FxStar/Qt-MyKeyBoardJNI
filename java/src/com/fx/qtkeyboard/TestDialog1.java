@@ -5,6 +5,7 @@
 package com.fx.qtkeyboard;
 
 import javax.swing.JComponent;
+import javax.swing.text.JTextComponent;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -23,7 +24,7 @@ public class TestDialog1 extends javax.swing.JDialog {
         Thread keyBoardThread = new Thread(new Runnable() {
 
             public void run() {
-                QTKeyBoardJNI.KeyBoardInit();
+                // QTKeyBoardJNI.KeyBoardInit();
             }
         });
 
@@ -35,14 +36,14 @@ public class TestDialog1 extends javax.swing.JDialog {
             @Override
             public void focusLost(FocusEvent e) {
                 System.out.println("jTextArea1:focusLost");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).close();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).close();
 
             }
 
             @Override
             public void focusGained(FocusEvent e) {
                 System.out.println("jTextArea1:focusGained");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).open();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
 
             }
         });
@@ -51,14 +52,14 @@ public class TestDialog1 extends javax.swing.JDialog {
             @Override
             public void focusLost(FocusEvent e) {
                 System.out.println("JText:focusLost");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).close();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).close();
 
             }
 
             @Override
             public void focusGained(FocusEvent e) {
                 System.out.println("JText:focusGained");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).open();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
 
             }
         });
@@ -66,14 +67,14 @@ public class TestDialog1 extends javax.swing.JDialog {
             @Override
             public void focusLost(FocusEvent e) {
                 System.out.println("JText:focusLost");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).close();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).close();
 
             }
 
             @Override
             public void focusGained(FocusEvent e) {
                 System.out.println("JText:focusGained");
-                InputComponentFactory.createInputComponent((JComponent) e.getSource()).open();
+                //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
 
             }
         });

@@ -2,22 +2,23 @@ package com.fx.qtkeyboard;
 
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.JTextComponent;
 
-public class JText extends BaseInputAbstract {
+public class JText implements KeyBoardListener  {
 
-    private JTextField textField;
+    private JTextComponent textField;
 
     // 私有静态变量，用于存储唯一的实例
     private static JText instance;
 
     // 私有构造方法，防止外部实例化
-    private JText(JTextField textField) {
+    private JText(JTextComponent textField) {
         // 在这里可以进行初始化操作
         this.textField = textField;
     }
 
     // 公有静态方法，提供全局访问点来获取唯一的实例
-    public static JText getInstance(JTextField textField) {
+    public static JText getInstance(JTextComponent textField) {
         // 使用双重检查锁定，确保只有一个线程可以创建实例
         if (instance == null) {
             instance = new JText(textField);
@@ -28,7 +29,7 @@ public class JText extends BaseInputAbstract {
         return instance;
     }
 
-    @Override
+
     public void onResponse(KeyBoardListenerEvent event) {
         int caretPosition = textField.getCaretPosition();
 
