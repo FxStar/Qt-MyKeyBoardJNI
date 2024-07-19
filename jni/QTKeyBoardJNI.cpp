@@ -88,10 +88,10 @@ void runQtEventLoop()
     window->setWindowIcon(windowIcon);
 
     Qt::WindowFlags flags = window->windowFlags();
-    flags &= ~Qt::WindowMinMaxButtonsHint;   // 移除缩小按钮 和放大
-    flags |= Qt::WindowStaysOnTopHint;       // 窗口始终位于顶部
-    flags |= Qt::X11BypassWindowManagerHint; // 只有x11 下需要
-    flags |= Qt::WindowDoesNotAcceptFocus;   // linux 用到（不会获取焦点）
+    flags &= ~Qt::WindowMinMaxButtonsHint; // 移除缩小按钮 和放大
+    flags |= Qt::WindowStaysOnTopHint;     // 窗口始终位于顶部
+    // flags |= Qt::X11BypassWindowManagerHint; // 只有x11 下需要
+    flags |= Qt::WindowDoesNotAcceptFocus; // linux 用到（不会获取焦点）
     window->setWindowFlags(flags);
 #ifdef Win_OS
     // 具体来说，WS_EX_NOACTIVATE 表示窗口不会激活，即不会成为焦点窗口，不会接收键盘输入等。而 WS_EX_COMPOSITED 表示窗口使用了复合（compositing）特性，这通常与视觉效果和渲染性能有关。
@@ -112,6 +112,7 @@ void runQtEventLoop()
 
     window->setLayout(v);
     // window->hide();
+    window->setStyleSheet("QWidget { background-color: #4e5052; }"); // 设置背景色
 
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width() - window->width()) / 2;
@@ -187,9 +188,19 @@ JNIEXPORT jint JNICALL Java_com_fx_qtkeyboard_QTKeyBoardJNI_KeyBoardClose(JNIEnv
  */
 JNIEXPORT jint JNICALL Java_com_fx_qtkeyboard_QTKeyBoardJNI_Release(JNIEnv *env, jclass clz)
 {
-    app->quit();
-    delete window;
-    delete app;
+    // app->quit();
+    if (window)
+    {
+        window->hide(); // 隐藏窗口
+        delete window;  // 删除窗口对象
+        window = nullptr;
+    }
+
+    if (app)
+    {
+        delete app; // 删除 QApplication 对象
+        app = nullptr;
+    }
     // if (qtThread && qtThread->isRunning())
     // {
     //     qtThread->quit();
