@@ -24,7 +24,7 @@ public class TestDialog extends javax.swing.JDialog {
         Thread keyBoardThread = new Thread(new Runnable() {
 
             public void run() {
-                // QTKeyBoardJNI.KeyBoardInit();
+                QTKeyBoardJNI.KeyBoardInit();
             }
         });
 
@@ -37,6 +37,7 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusLost(FocusEvent e) {
                 System.out.println("jTextArea1:focusLost");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).close();
+                
 
             }
 
@@ -44,6 +45,8 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusGained(FocusEvent e) {
                 System.out.println("jTextArea1:focusGained");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
+                QTKeyBoardJNI.addListener(jTextArea1);
+                QTKeyBoardJNI.KeyBoardOpen();
 
             }
         });
@@ -59,6 +62,8 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusGained(FocusEvent e) {
                 System.out.println("jTextArea1:focusGained");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
+                QTKeyBoardJNI.addListener(jTextArea2);
+                QTKeyBoardJNI.KeyBoardOpen();
 
             }
         });
@@ -75,6 +80,8 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusGained(FocusEvent e) {
                 System.out.println("JText:focusGained");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
+                QTKeyBoardJNI.addListener(jTextField1);
+                QTKeyBoardJNI.KeyBoardOpen();
 
             }
         });
@@ -90,6 +97,8 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusGained(FocusEvent e) {
                 System.out.println("JText:focusGained");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
+                QTKeyBoardJNI.addListener(jTextField2);
+                QTKeyBoardJNI.KeyBoardOpen();
 
             }
         });
@@ -105,6 +114,8 @@ public class TestDialog extends javax.swing.JDialog {
             public void focusGained(FocusEvent e) {
                 System.out.println("JText:focusGained");
                 //InputComponentFactory.createInputComponent((JTextComponent) e.getSource()).open();
+                QTKeyBoardJNI.addListener((JTextComponent) e.getSource());
+                QTKeyBoardJNI.KeyBoardOpen();
 
             }
         });

@@ -4,7 +4,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.text.JTextComponent;
 
-public class JText implements KeyBoardListener  {
+public class JText implements KeyBoardListener {
 
     private JTextComponent textField;
 
@@ -28,7 +28,6 @@ public class JText implements KeyBoardListener  {
 
         return instance;
     }
-
 
     public void onResponse(KeyBoardListenerEvent event) {
         int caretPosition = textField.getCaretPosition();
@@ -54,14 +53,34 @@ public class JText implements KeyBoardListener  {
                 });
                 break;
             case 16777221: // 换行操作
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        try {
+                            System.out.println("getValue:" + event.getValue());
+
+                            textField.getDocument().insertString(caretPosition, System.lineSeparator(), null);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 break;
             default: // 默认操作 追加字符串
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
 
                         try {
+                            if (textField.getSelectedText() != null) {
 
-                            textField.getDocument().insertString(caretPosition, event.getValue(), null);
+                                textField.getDocument().remove(caretPosition - textField.getSelectedText().length(),
+                                        textField.getSelectedText().length());
+
+                            }
+                            // System.out.println("getSelectedText:" + textField.getSelectedText());
+
+                            textField.getDocument().insertString(textField.getCaretPosition(), event.getValue(), null);
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
