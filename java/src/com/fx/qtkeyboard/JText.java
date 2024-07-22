@@ -43,7 +43,12 @@ public class JText implements KeyBoardListener {
                     public void run() {
 
                         try {
-                            if (caretPosition - 1 >= 0) {
+                            if (textField.getSelectedText() != null) {
+
+                                textField.getDocument().remove(caretPosition - textField.getSelectedText().length(),
+                                        textField.getSelectedText().length());
+
+                            } else if (caretPosition - 1 >= 0) {
                                 textField.getDocument().remove(caretPosition - 1, 1);
                             }
                         } catch (Exception e) {
